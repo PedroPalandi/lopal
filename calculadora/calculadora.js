@@ -31,10 +31,13 @@
             } else {
                 alert("Operador inválido");
                 operador_valido = false;
-                 continua = prompt("Digite sim para continuar e não para encerrar")
-                return
+                 continua = prompt("Digite sim para continuar e não para encerrar");
+                 if (continua === "não"){
+                    return
+                 }
+                
             }
-            if( operador != "/" || operando2 != 0 ){
+            if( (operador != "/" || operando2 != 0) && operador_valido != false ){
                 alert("Resultado: " + 
                 operando1 + " " + operador + " " + operando2 + " = " + resultado);
             } 
