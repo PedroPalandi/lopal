@@ -51,7 +51,7 @@ function mostrarIndicador(mensagem, x, y){
     contexto.font = "bold 18px Arial"
     contexto.textAlign= "left"
     contexto.textBaseline = "middle"
-    contexto.fillStyle = "lightgray"
+    contexto.fillStyle = "lightgreen"
     contexto.fillText(
         mensagem,
         x,
@@ -210,24 +210,33 @@ function mostrarResultado(mensagem,cor){
     document.addEventListener('keydown', teclaPressionada);
 
 function teclaPressionada(evento){
-        if(evento.key == "ArrowUp" && moduloLunar.combustivel > 0){
+        if(evento.key == "w" && moduloLunar.combustivel > 0){
             moduloLunar.motorLigado = true;
-        }else if (evento.key == "ArrowRight"){
+        }else if (evento.key == "d"){
             moduloLunar.rotacaoHorario = true;
-        }else if (evento.key == "ArrowLeft"){
+        }else if (evento.key == "a"){
             moduloLunar.rotacaoAntiHorario = true;
+        }
+
+        if(evento.key == "r"){
+            resetarJogo = true
         }
 }
 
     document.addEventListener('keyup', teclaSolta);
     function teclaSolta(evento){
-        if (evento.key == "ArrowUp"){
+        if (evento.key == "w"){
             moduloLunar.motorLigado = false
-        }else if (evento.key == "ArrowRight"){
+        }else if (evento.key == "d"){
             moduloLunar.rotacaoHorario = false;
-        }else if (evento.key == "ArrowLeft"){
+        }else if (evento.key == "a"){
             moduloLunar.rotacaoAntiHorario = false;
         }
+
+        if(evento.key == "r"){
+            resetarJogo = false
+        }
+
 }
 
 function consumirCombustivel(){
@@ -253,5 +262,9 @@ function atracaoGravitacional(){
         moduloLunar.velocidade.y -= 0.14 * Math.cos(moduloLunar.angulo);
         moduloLunar.velocidade.x += 0.14 * Math.sin(moduloLunar.angulo);
     }
+}
+function resetarJogo(){
+    resetarJogo == true 
+    return
 }
 desenhar();
